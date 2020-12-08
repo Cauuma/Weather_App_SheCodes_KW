@@ -86,7 +86,7 @@ function showTemperature(response) {
   celsius = Math.round(response.data.main.temp);
   feelsLike = Math.round(response.data.main.feels_like);
   humidity = response.data.main.humidity;
-  windspeed = response.data.wind.speed;
+  windspeed = Math.round(response.data.wind.speed);
   clouds = response.data.clouds.all;
   city = response.data.name;
   lat = response.data.coord.lat;
@@ -125,7 +125,7 @@ function percentData() {
   let listHumidity = document.querySelector("#humidity");
   listHumidity.innerHTML = `Humidity: ${humidity} %`;
   let listWindspeed = document.querySelector("#windspeed");
-  listWindspeed.innerHTML = `Wind: ${windspeed}km/h`;
+  listWindspeed.innerHTML = `Wind: ${windspeed} km/h`;
   let listClouds = document.querySelector("#clouds");
   listClouds.innerHTML = `Cloudiness: ${clouds}%`;
 }
