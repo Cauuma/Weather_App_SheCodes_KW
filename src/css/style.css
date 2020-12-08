@@ -128,6 +128,12 @@ ul {
   z-index: -1000;
   overflow: hidden;
 }
+.background {
+  background-image: url("../img/LandscapeVideo_Moment.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 #openSource {
   text-align: center;
