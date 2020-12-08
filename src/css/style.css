@@ -127,6 +127,20 @@ ul {
   z-index: -1000;
   overflow: hidden;
 }
+
+#openSource {
+  text-align: center;
+  color: #d5f0f5;
+}
+
+#openSource a {
+  text-decoration: none;
+  color: #d5f0f5;
+}
+#openSource a:hover {
+  color: rgb(15, 124, 143);
+}
+
 /* Media Queries */
 
 @media (max-width: 575.5px) {
