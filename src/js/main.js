@@ -91,11 +91,23 @@ function showTemperature(response) {
   city = response.data.name;
   lat = response.data.coord.lat;
   long = response.data.coord.lon;
+  // Icon Data
+  let iconData = response.data.weather[0].icon;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${iconData}@2x.png`);
+  let description = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = `${description}`;
+
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${city}`;
 
   forecastWeather();
   setCelsius();
+}
+
+function getMiles(speed) {
+  return Math.round(speed * 0.621371);
 }
 
 // shows temperature in celsius in h2 result container
@@ -117,14 +129,21 @@ function percentData() {
   let listClouds = document.querySelector("#clouds");
   listClouds.innerHTML = `Cloudiness: ${clouds}%`;
 }
+
 // shows temperature in fahrenheit in h2 result container
 function setFahrenheit() {
   let h2 = document.querySelector("h2");
   let fahrenheit = Math.round(celsius * 1.8 + 32);
   h2.innerHTML = `${fahrenheit}°F`;
+
   let listFeel = document.querySelector("#feel");
   let listFahrenheit = Math.round(feelsLike * 1.8 + 32);
   listFeel.innerHTML = `Feels like: ${listFahrenheit}°F`;
+
+  let windspeedInMiles = getMiles(windspeed);
+  let windspeedElement = document.querySelector("#windspeed");
+  windspeedElement.innerHTML = `Wind: ${windspeedInMiles} mph`;
+
   modus = "F";
   forecastWeather();
 }
