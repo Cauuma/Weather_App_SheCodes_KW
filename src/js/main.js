@@ -7,6 +7,7 @@ let windspeed = 0;
 let clouds = 0;
 let lat = 0;
 let long = 0;
+let modus = "C";
 
 let apiKey = "ca867a1ff9a2ba4fcae7d290754eb99e";
 
@@ -18,6 +19,66 @@ function loadLocationWeatherData() {
   let locationApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric`;
   axios.get(`${locationApiUrl}&appid=${apiKey}`).then(showTemperature);
 }
+function forecastWeather() {
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=current,minutely,hourly,alerts&units=metric`;
+  axios.get(`${forecastApiUrl}&appid=${apiKey}`).then(forecastTemperature);
+}
+
+function forecastTemperature(response) {
+  console.log(response);
+
+  const elOneTitle = document.querySelector("#one");
+  const elOneTemp = document.querySelector("#one + .forecast-day p");
+  updateForecastTemperature(elOneTitle, elOneTemp, response.data.daily[1]);
+
+  updateForecastTemperature(
+    document.querySelector("#two"),
+    document.querySelector("#two + .forecast-day p"),
+    response.data.daily[2]
+  );
+  updateForecastTemperature(
+    document.querySelector("#three"),
+    document.querySelector("#three + .forecast-day p"),
+    response.data.daily[3]
+  );
+  updateForecastTemperature(
+    document.querySelector("#four"),
+    document.querySelector("#four + .forecast-day p"),
+    response.data.daily[4]
+  );
+  updateForecastTemperature(
+    document.querySelector("#five"),
+    document.querySelector("#five + .forecast-day p"),
+    response.data.daily[5]
+  );
+  updateForecastTemperature(
+    document.querySelector("#six"),
+    document.querySelector("#six + .forecast-day p"),
+    response.data.daily[6]
+  );
+}
+
+function updateForecastTemperature(elTitle, elTemp, data) {
+  let unixTimestamp = data.dt;
+  const dateObject = new Date(unixTimestamp * 1000);
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[dateObject.getDay()];
+
+  elTitle.innerHTML = `${day}`;
+  let temperatureMin = Math.round(data.temp.min);
+  let temperatureMax = Math.round(data.temp.max);
+  if (modus === "F") {
+    temperatureMin = getFahrenheit(temperatureMin);
+    temperatureMax = getFahrenheit(temperatureMax);
+  }
+
+  elTemp.innerHTML = `${temperatureMin}°${modus} | ${temperatureMax}°${modus}`;
+}
+
+function getFahrenheit(temp) {
+  return Math.round(temp * 1.8 + 32);
+}
 
 // shows of temperature and percent data in result container
 function showTemperature(response) {
@@ -28,9 +89,12 @@ function showTemperature(response) {
   windspeed = response.data.wind.speed;
   clouds = response.data.clouds.all;
   city = response.data.name;
+  lat = response.data.coord.lat;
+  long = response.data.coord.lon;
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${city}`;
 
+  forecastWeather();
   setCelsius();
 }
 
@@ -38,6 +102,8 @@ function showTemperature(response) {
 function setCelsius() {
   let h2 = document.querySelector("h2");
   h2.innerHTML = `${celsius}°C`;
+  modus = "C";
+  forecastWeather();
   percentData();
 }
 // shows percent data
@@ -59,6 +125,8 @@ function setFahrenheit() {
   let listFeel = document.querySelector("#feel");
   let listFahrenheit = Math.round(feelsLike * 1.8 + 32);
   listFeel.innerHTML = `Feels like: ${listFahrenheit}°F`;
+  modus = "F";
+  forecastWeather();
 }
 
 // shows and updates time per second in result container

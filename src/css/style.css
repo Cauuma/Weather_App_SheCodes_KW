@@ -5,6 +5,9 @@ body {
 ul {
   padding: 0;
 }
+h3 {
+  text-align: center;
+}
 .weather-container {
   width: 85%;
   margin-left: auto;
@@ -105,14 +108,14 @@ ul {
   text-align: center;
 }
 
-.forcast-container {
+.forecast-container {
   font-family: "Gruppo";
   font-size: 1.5rem;
   color: #d5f0f5;
   margin-top: 30px;
   text-shadow: 1px 1px rgb(15, 124, 143);
 }
-.forcast-container p {
+.forecast-container p {
   text-align: center;
 }
 
@@ -151,20 +154,20 @@ ul {
 /* Media Queries */
 
 @media (max-width: 575.5px) {
-  .forcast-container > .row > div {
+  .forecast-container > .row > div {
     border-bottom: 1px solid #d5f0f5;
   }
-  .forcast-container > .row > div:last-child {
+  .forecast-container > .row > div:last-child {
     border-bottom: none;
     margin-bottom: 0;
   }
   .weather-container {
     padding-bottom: 15px;
   }
-  .forcast-container > .row > div:first-child {
+  .forecast-container > .row > div:first-child {
     border-top: 1px solid #d5f0f5;
   }
-  .forcast-container > .row > div > p {
+  .forecast-container > .row > div > p {
     margin: 10px;
   }
   .percent-data {
@@ -176,7 +179,7 @@ ul {
   .percent-data {
     margin: 0;
   }
-  .forcast-container {
+  .forecast-container {
     margin: 0;
   }
   .weather-container input {
@@ -186,26 +189,26 @@ ul {
 }
 
 @media (min-width: 576px) {
-  .forcast-container > .row > div:nth-child(odd) {
+  .forecast-container > .row > div:nth-child(odd) {
     border-right: 1px solid #d5f0f5;
   }
 }
 
 @media (min-width: 992px) {
-  .forcast-container > .row > div {
+  .forecast-container > .row > div {
     border-right: 1px solid #d5f0f5;
   }
 
-  .forcast-container > .row > div:nth-child(3n) {
+  .forecast-container > .row > div:nth-child(3n) {
     border-right: none;
   }
 }
 
 @media (min-width: 1200px) {
-  .forcast-container > .row > div:nth-child(1n) {
+  .forecast-container > .row > div:nth-child(1n) {
     border-right: 1px solid #d5f0f5;
   }
-  .forcast-container > .row > div:last-child {
+  .forecast-container > .row > div:last-child {
     border-right: none;
   }
 }
