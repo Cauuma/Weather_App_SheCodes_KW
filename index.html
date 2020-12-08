@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gruppo&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Author Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/101ab76fb3.js" crossorigin="anonymous"></script>
+    <title>🌞Weather App</title>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="background">
+      <video autoplay muted loop id="BackgroundVideo">
+        <source
+          src="http://spielgruppe-hinwil.ch/ftp/coverr-the-mountain-valley-landscale-1585566302866.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="container">
+      <div class="weather-container">
+        <form>
+          <input type="text" placeholder="Enter your City" />
+          <button id="search" type="submit" class="btn-newLink btn_1">
+            <i class="fas fa-search"></i>
+          </button>
+          <button id="location" type="button" class="btn-newLink btn_1"><i class="fas fa-location-arrow"></i></button>
+          <button id="celsius" type="button" class="btn_1 btn-newLink">°C</button>
+          <button id="fahrenheit" type="button" class="btn_1 btn-newLink">°F</button>
+        </form>
+        <div class="result-container">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <ul>
+                <h1 id="located-city">Zürich</h1>
+                <h2></h2>
+                <li id="date"></li>
+                <li id="local-time"></li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-6 percent-data">
+              <ul>
+                <li id="feel"></li>
+                <li id="humidity"></li>
+                <li id="windspeed"></li>
+                <li id="clouds"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="forcast-container">
+          <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+              <p>Saturday <br />3°c | 5°c</p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+              <p>
+                Sunday <br />
+                1°c | 7°c
+              </p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+              <p>
+                Monday <br />
+                1°c | 7°c
+              </p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+              <p>
+                Tuesday <br />
+                8°c | 13°c
+              </p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+              <p>
+                Wednesday <br />
+                5°c | 11°c
+              </p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+              <p>
+                Thursday <br />
+                5°c | 12°c
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/js/main.js"></script>
+  </body>
+</html>
